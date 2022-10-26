@@ -6,6 +6,13 @@ module.exports = withImages({
   fileExtensions: ['jpg', 'jpeg', 'png'],
   webpack(config) {
     svgLoader(config, '/_next');
+
+    config.module.rules.push({
+      test: /\.(graphql|gql)$/,
+      exclude: /node_modules/,
+      loader: 'graphql-tag/loader',
+    });
+
     return config;
   },
   images: {

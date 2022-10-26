@@ -9,7 +9,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2021,
   },
-  ignorePatterns: ['!.*.js', '!.storybook'],
+  ignorePatterns: ['!.*.js', '!.storybook', 'src/graphql/types.ts'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -76,6 +76,10 @@ module.exports = {
         // components don't accept spread props should therefore be done at the
         // pull request review layer.
         'react/jsx-props-no-spreading': 'off',
+        // breaks some libraries like apollo
+        // https://github.com/apollographql/apollo/issues/1169
+        'import/named': 'off',
+        'import/no-extraneous-dependencies': 'off',
       },
       overrides: [
         // Always prefer default exports, except in files where typically we'd

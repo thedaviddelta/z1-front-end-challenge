@@ -1,0 +1,10 @@
+schema: ${NEXT_PUBLIC_GRAPHQL_SCHEMA:"https://api-frontend-challenge.herokuapp.com/graphql"}
+documents: src/graphql/**/*.graphql
+extensions:
+  codegen:
+    generates:
+      src/graphql/types.ts:
+        plugins:
+          - typescript
+          - typescript-operations
+          - typed-document-node

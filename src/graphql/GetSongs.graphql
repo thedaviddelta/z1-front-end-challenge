@@ -1,0 +1,17 @@
+query GetSongs($query: String = "", $sortType: String = "name") {
+  songs(search: $query, sort: { key: $sortType, order: ASC }) {
+    songs {
+      id
+      name
+      author {
+        name
+      }
+      description
+      genre
+      image
+      audio {
+        url
+      }
+    }
+  }
+}
