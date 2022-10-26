@@ -1,11 +1,10 @@
-import { Colors } from '$/styles/themes/theme';
 import { typography } from '$/styles/themes/typography';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { TVariants } from './types';
+import { $StyledProps } from './types';
 
-export const Container = styled.p<{ $color: Colors; $variant: TVariants }>`
+export const Container = styled.p<$StyledProps>`
   font-weight: ${({ theme }) => theme.weight.regular};
-  color: ${({ theme, $color }) => theme.color[$color]};
+  ${({ theme, $color }) => $color && css`color: ${theme.color[$color]};`}
   ${({ $variant }) => typography[$variant]}
 `;

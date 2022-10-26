@@ -11,3 +11,8 @@ export type TextProps = {
   className?: string;
   color?: Colors;
 };
+
+export type $StyledProps = {
+  $variant: TextProps['variant'];
+  $color: TextProps['color'];
+};
