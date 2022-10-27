@@ -1,27 +1,13 @@
+import { SongList } from '$/components/SongList';
 import { Text } from '$/components/Text';
-import GET_SONGS from '$/graphql/GetSongs.graphql';
-import { GetSongsQuery } from '$/graphql/types';
-import { useQuery } from '@apollo/client';
-import { FC, useDeferredValue, useState } from 'react';
+import { SortKey } from '$/globals/enums/sortKey';
+import { FC } from 'react';
 
+import { useLogic } from './logic';
 import { Container, SearchInput } from './styles';
 
-const SortTypes = {
-  NAME: 'name',
-  AUTHOR: 'author.name',
-  GENRE: 'genre.name',
-} as const;
-
-type SortType = typeof SortTypes[keyof typeof SortTypes];
-
 const HomeView: FC = () => {
-  const [query, setQuery] = useState('');
-  const [sortType, setSortType] = useState<SortType>(SortTypes.NAME);
-  const deferredQuery = useDeferredValue(query);
-
-  const { data, loading, error } = useQuery<GetSongsQuery>(GET_SONGS, {
-    variables: { query: deferredQuery, sortType },
-  });
+  const { query, sortKey, handleQueryChange, handleSortChange } = useLogic();
 
   return (
     <Container>
@@ -31,23 +17,16 @@ const HomeView: FC = () => {
       <SearchInput
         placeholder="Search by title, genre..."
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleQueryChange}
       />
-      <select
-        value={sortType}
-        onChange={(e) => setSortType(e.target.value as SortType)}
-      >
-        {Object.entries(SortTypes).map(([key, value]) => (
+      <select value={sortKey} onChange={handleSortChange}>
+        {Object.entries(SortKey).map(([key, value]) => (
           <option value={value} key={value}>
             by {key.toLocaleLowerCase()}
           </option>
         ))}
       </select>
-      <div>
-        {data?.songs?.songs?.map(({ name }) => (
-          <div key={name}>{name}</div>
-        ))}
-      </div>
+      <SongList query={query} sortKey={sortKey} />
     </Container>
   );
 };

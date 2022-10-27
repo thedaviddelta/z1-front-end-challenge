@@ -27,7 +27,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "target": "es2016",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
   },
   "include": ["next-env.d.ts", "additional.d.ts", "**/*.tsx", "**/*.ts"],
   "exclude": ["node_modules"]

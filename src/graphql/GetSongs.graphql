@@ -1,5 +1,5 @@
-query GetSongs($query: String = "", $sortType: String = "name") {
-  songs(search: $query, sort: { key: $sortType, order: ASC }) {
+query GetSongs($query: String = "", $sortKey: String = "name") {
+  songs(search: $query, sort: { key: $sortKey, order: ASC }) {
     songs {
       id
       name

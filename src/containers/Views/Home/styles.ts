@@ -1,7 +1,7 @@
 import { SearchInput as DefaultSearchInput } from '$/components/SearchInput';
 import styled from 'styled-components';
 
-export const Container = styled.article`
+export const Container = styled.div`
   padding-block: 2.5rem 6.3rem;
 `;
 
