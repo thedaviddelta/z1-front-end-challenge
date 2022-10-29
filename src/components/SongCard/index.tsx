@@ -35,9 +35,13 @@ export const SongCard: FC<SongCardProps> = ({ song }) => {
         </Text>
 
         <ExtraWrapper>
-          <PlayButton onClick={() => console.log('Plays!')}>
-            <PlayFillIcon aria-label="Play" />
-          </PlayButton>
+          <PlayButton
+            icon={PlayFillIcon}
+            label="Play"
+            size={16}
+            color="white"
+            onClick={() => console.log('Plays!')}
+          />
           <Text tag="p" variant="caption" color="grayscale700">
             {formatSeconds(songDuration).toMinutes()}
           </Text>

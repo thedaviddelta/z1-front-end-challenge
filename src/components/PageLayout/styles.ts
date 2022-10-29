@@ -7,8 +7,8 @@ export const Container = styled.div`
   height: 100%;
   display: grid;
   grid:
-    'aside main'
-    'player player'
+    'aside main' 1fr
+    'player player' auto
     / auto 1fr;
 `;
 

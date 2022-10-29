@@ -1,4 +1,5 @@
 import { FavButton as DefaultFavButton } from '$/components/FavButton';
+import { IconButton } from '$/components/IconButton';
 import { Text } from '$/components/Text';
 import styled from 'styled-components';
 
@@ -32,20 +33,10 @@ export const ExtraWrapper = styled.div`
   margin-block-start: 0.5rem;
 `;
 
-export const PlayButton = styled.button`
-  block-size: 2rem;
-  inline-size: 2rem;
+export const PlayButton = styled(IconButton)`
   padding: 0.5rem;
   background-color: ${({ theme }) => theme.color.grayscale900};
-  color: ${({ theme }) => theme.color.white};
-  border: none;
   border-radius: 50%;
-  cursor: pointer;
-
-  & > svg {
-    width: 1rem;
-    height: 1rem;
-  }
 `;
 
 export const GenreText = styled(Text)`

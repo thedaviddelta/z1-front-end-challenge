@@ -1,0 +1,15 @@
+query GetSong($name: String!) {
+  song(name: $name) {
+    id
+    name
+    author {
+      name
+    }
+    description
+    genre
+    image
+    audio {
+      url
+    }
+  }
+}
