@@ -6,9 +6,6 @@ export const Container = styled.aside`
   position: relative;
 
   width: 15rem;
-  height: 100%;
-
-  background-color: ${({ theme }) => theme.color.grayscale50};
 `;
 
 export const UserInfoContainer = styled.div`

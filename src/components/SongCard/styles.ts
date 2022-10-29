@@ -1,3 +1,4 @@
+import { FavButton as DefaultFavButton } from '$/components/FavButton';
 import { Text } from '$/components/Text';
 import styled from 'styled-components';
 
@@ -53,14 +54,6 @@ export const GenreText = styled(Text)`
   border-radius: 3rem;
 `;
 
-export const FavButton = styled.button`
+export const FavButton = styled(DefaultFavButton)`
   justify-self: end;
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  & > svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
 `;

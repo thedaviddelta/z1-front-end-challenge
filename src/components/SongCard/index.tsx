@@ -1,7 +1,5 @@
-import HeartFillIcon from '$/assets/icons/heart-fill.svg';
-import HeartLineIcon from '$/assets/icons/heart-line.svg';
-import PlayFillIcon from '$/assets/icons/play-fill.svg';
 import PauseFillIcon from '$/assets/icons/pause-fill.svg';
+import PlayFillIcon from '$/assets/icons/play-fill.svg';
 import { Text } from '$/components/Text';
 import { formatConstant, formatSeconds } from '$/utils/format';
 import { FC } from 'react';
@@ -49,9 +47,7 @@ export const SongCard: FC<SongCardProps> = ({ song }) => {
         </ExtraWrapper>
       </InfoWrapper>
 
-      <FavButton onClick={() => console.log('Favs!')}>
-        <HeartLineIcon aria-label="Fav" />
-      </FavButton>
+      <FavButton />
     </Container>
   );
 };
