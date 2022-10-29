@@ -7,6 +7,12 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  html, body, #__next {
+    height: 100%;
+  }
+  #__next {
+    isolation: isolate;
+  }
   body {
     font-family: 'Jakarta', -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
@@ -17,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
   }
   #__next {
     display: flex;
-    min-height: 100vh;
     
     > * {
       flex: 1;

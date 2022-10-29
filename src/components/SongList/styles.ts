@@ -1,9 +1,23 @@
+import { Text } from '$/components/Text';
 import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.section`
   display: flex;
   flex-flow: column;
   gap: 2rem;
+`;
+
+export const ErrorText = styled(Text)`
+  background-color: ${({ theme }) => theme.color.kaihong700};
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.75rem;
+  /* also center the icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const spin = keyframes`

@@ -1,10 +1,11 @@
+import { Select } from '$/components/Select';
 import { SongList } from '$/components/SongList';
 import { Text } from '$/components/Text';
 import { SortKey } from '$/globals/enums/sortKey';
 import { FC } from 'react';
 
 import { useLogic } from './logic';
-import { Container, SearchInput } from './styles';
+import { Container, SearchInput, SubtitleWrapper } from './styles';
 
 const HomeView: FC = () => {
   const { query, sortKey, handleQueryChange, handleSortChange } = useLogic();
@@ -19,13 +20,20 @@ const HomeView: FC = () => {
         value={query}
         onChange={handleQueryChange}
       />
-      <select value={sortKey} onChange={handleSortChange}>
-        {Object.entries(SortKey).map(([key, value]) => (
-          <option value={value} key={value}>
-            by {key.toLocaleLowerCase()}
-          </option>
-        ))}
-      </select>
+
+      <SubtitleWrapper>
+        <Text tag="h2" variant="title2">
+          Featured songs
+        </Text>
+        <Select value={sortKey} onChange={handleSortChange} label="Sort by">
+          {Object.entries(SortKey).map(([key, value]) => (
+            <option value={value} key={value}>
+              by {key.toLocaleLowerCase()}
+            </option>
+          ))}
+        </Select>
+      </SubtitleWrapper>
+
       <SongList query={query} sortKey={sortKey} />
     </Container>
   );

@@ -14,7 +14,7 @@ export const useLogic = ({ query, sortKey }: LogicProps) => {
 
   return {
     songs: data?.songs?.songs,
-    errorMsg: error,
+    error,
     isLoading: loading,
   };
 };
