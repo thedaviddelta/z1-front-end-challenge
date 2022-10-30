@@ -18,14 +18,16 @@ export const SongList: FC<SongListProps> = (props) => {
       </ErrorText>
     );
 
-  if (songs)
+  if (songs) {
+    const songNames = songs.map(({ name }) => name);
     return (
       <Container>
         {songs.map((song) => (
-          <SongCard key={song.id} song={song} />
+          <SongCard key={song.id} song={song} songNames={songNames} />
         ))}
       </Container>
     );
+  }
 
   return null;
 };

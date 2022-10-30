@@ -1,5 +1,6 @@
 import '$/styles/fonts.css';
 import { Layout } from '$/containers/Layouts';
+import { QueueProvider } from '$/contexts/queue';
 import { PagePropsWithApollo, useApolloClient } from '$/graphql/apollo-client';
 import GlobalStyle from '$/styles/global';
 import theme from '$/styles/themes';
@@ -13,10 +14,12 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
-        <GlobalStyle />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <QueueProvider>
+          <GlobalStyle />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueueProvider>
       </ApolloProvider>
     </ThemeProvider>
   );

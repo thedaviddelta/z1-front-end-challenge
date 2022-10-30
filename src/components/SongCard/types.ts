@@ -4,8 +4,7 @@ type Song = GetSongsQuery['songs']['songs'][0];
 
 export type SongCardProps = {
   song: Song;
+  songNames: string[];
 };
 
-export type LogicProps = {
-  audioUrl: Song['audio']['url'];
-};
+export type LogicProps = SongCardProps;

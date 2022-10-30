@@ -1,4 +1,3 @@
-import PauseFillIcon from '$/assets/icons/pause-fill.svg';
 import PlayFillIcon from '$/assets/icons/play-fill.svg';
 import { Text } from '$/components/Text';
 import { formatConstant, formatSeconds } from '$/utils/format';
@@ -11,17 +10,32 @@ import {
   FavButton,
   GenreText,
   Image,
+  ImageAnimationItem,
+  ImageAnimationWrapper,
+  ImageWrapper,
   InfoWrapper,
   PlayButton,
 } from './styles';
 import { SongCardProps } from './types';
 
-export const SongCard: FC<SongCardProps> = ({ song }) => {
-  const { songDuration } = useLogic({ audioUrl: song.audio.url });
+export const SongCard: FC<SongCardProps> = ({ song, songNames }) => {
+  const { songDuration, isPlaying, handlePlayClick } = useLogic({
+    song,
+    songNames,
+  });
 
   return (
     <Container>
-      <Image src={song.image} alt={`${song.name}'s art`} />
+      <ImageWrapper>
+        <Image src={song.image} alt={`${song.name}'s art`} />
+        {isPlaying && (
+          <ImageAnimationWrapper>
+            {Array.from({ length: 8 }).map((_, i) => (
+              <ImageAnimationItem key={i} />
+            ))}
+          </ImageAnimationWrapper>
+        )}
+      </ImageWrapper>
 
       <InfoWrapper>
         <Text tag="h3" variant="bodyBold" color="grayscale900">
@@ -40,7 +54,7 @@ export const SongCard: FC<SongCardProps> = ({ song }) => {
             label="Play"
             size={16}
             color="white"
-            onClick={() => console.log('Plays!')}
+            onClick={handlePlayClick}
           />
           <Text tag="p" variant="caption" color="grayscale700">
             {formatSeconds(songDuration).toMinutes()}

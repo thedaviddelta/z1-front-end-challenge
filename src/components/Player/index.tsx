@@ -4,12 +4,10 @@ import SkipForwardFillIcon from '$/assets/icons/skip-forward-fill.svg';
 import { FavButton } from '$/components/FavButton';
 import { IconButton } from '$/components/IconButton';
 import { Text } from '$/components/Text';
-import GET_SONG from '$/graphql/GetSong.graphql';
-import { GetSongQuery } from '$/graphql/types';
 import { formatSeconds } from '$/utils/format';
-import { useQuery } from '@apollo/client';
 import { FC } from 'react';
 
+import { useLogic } from './logic';
 import {
   Container,
   HorizontalStack,
@@ -20,24 +18,22 @@ import {
 import { PlayerProps } from './types';
 
 export const Player: FC<PlayerProps> = ({ className }) => {
-  // song info is already in cache so it works like a global store
-  const { data } = useQuery<GetSongQuery>(GET_SONG, {
-    variables: { name: 'Allison Williams' },
-  });
-
-  const song = data?.song;
+  const { song, goPrevSong, goNextSong } = useLogic();
 
   return (
     <Container className={className}>
       <HorizontalStack $gap={18}>
         <FavButton />
-        <Image src={song?.image} alt={`${song?.name ?? ''}'s art`} />
+        <Image
+          src={song?.image ?? '/song-fallback.svg'}
+          alt={song?.name ? `${song.name}'s art` : 'No track'}
+        />
         <div>
           <Text tag="p" variant="body2" color="white">
-            {song?.name}
+            {song?.name ?? 'No track'}
           </Text>
           <Text tag="p" variant="caption" color="grayscale200">
-            {song?.author?.name}
+            {song?.author?.name ?? 'Unknown'}
           </Text>
         </div>
       </HorizontalStack>
@@ -47,6 +43,7 @@ export const Player: FC<PlayerProps> = ({ className }) => {
           label="Previous"
           size={24}
           color="white"
+          onClick={goPrevSong}
         />
         <PlayButton
           icon={PlayFillIcon}
@@ -59,6 +56,7 @@ export const Player: FC<PlayerProps> = ({ className }) => {
           label="Next"
           size={24}
           color="white"
+          onClick={goNextSong}
         />
       </HorizontalStack>
       <HorizontalStack $gap={12}>
