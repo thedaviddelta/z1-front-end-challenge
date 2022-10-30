@@ -1,7 +1,12 @@
-import { FavButton as DefaultFavButton } from '$/components/FavButton';
 import { IconButton } from '$/components/IconButton';
 import { Text } from '$/components/Text';
+import dynamic from 'next/dynamic';
 import styled, { keyframes } from 'styled-components';
+
+const DefaultFavButton = dynamic(
+  () => import('$/components/FavButton').then((mod) => mod.FavButton),
+  { ssr: false },
+);
 
 export const Container = styled.article`
   display: grid;
@@ -56,6 +61,7 @@ export const ImageAnimationWrapper = styled.div`
   gap: 0.25rem;
   align-items: flex-end;
   background-color: hsl(0deg 100% 100% / 0.3); /* transparent white */
+  pointer-events: none;
 `;
 
 export const ImageAnimationItem = styled.div`

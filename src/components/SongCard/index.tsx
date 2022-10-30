@@ -65,7 +65,7 @@ export const SongCard: FC<SongCardProps> = ({ song, songNames }) => {
         </ExtraWrapper>
       </InfoWrapper>
 
-      <FavButton />
+      <FavButton songId={song.id} />
     </Container>
   );
 };

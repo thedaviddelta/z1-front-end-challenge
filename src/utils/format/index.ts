@@ -1,12 +1,12 @@
 export const formatSeconds = (seconds?: number) => ({
   toMinutes() {
-    if (!seconds || seconds < 0) return '? min';
+    if (seconds === undefined || seconds < 0) return '? min';
 
     const minutes = Math.ceil(seconds / 60);
     return `${minutes} min`;
   },
   toFull() {
-    if (!seconds || seconds < 0) return '??:??';
+    if (seconds === undefined || seconds < 0) return '??:??';
 
     const hours = Math.floor(seconds / 3600);
     const hoursRest = Math.floor(seconds % 3600);

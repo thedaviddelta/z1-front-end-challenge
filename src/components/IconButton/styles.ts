@@ -5,7 +5,7 @@ import { ContainerProps } from './types';
 export const Container = styled.button<ContainerProps>`
   border: none;
   background: none;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   ${({ theme, $color }) => $color && `color: ${theme.color[$color]};`}
 
   & > svg {
