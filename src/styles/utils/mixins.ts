@@ -6,22 +6,15 @@ import type {
 } from 'styled-components';
 
 export const prettyScrollbar = ({
-  vertical = true,
   size = '6px',
 }: {
-  vertical?: boolean;
   size?: string;
 }): FlattenInterpolation<ThemeProps<DefaultTheme>> => css`
   scrollbar-width: thin;
   scrollbar-color: transparent;
   &::-webkit-scrollbar {
-    ${vertical
-      ? css`
-          width: ${size};
-        `
-      : css`
-          height: ${size};
-        `}
+    width: ${size};
+    height: ${size};
   }
   &::-webkit-scrollbar-track {
     background: transparent;

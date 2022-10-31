@@ -1,3 +1,4 @@
+import { CustomHead } from '$/components/CustomHead';
 import { Select } from '$/components/Select';
 import { SongList } from '$/components/SongList';
 import { Text } from '$/components/Text';
@@ -12,6 +13,8 @@ const HomeView: FC = () => {
 
   return (
     <Container>
+      <CustomHead customTitle="Explore" />
+
       <Text tag="h1" variant="title1">
         Explore
       </Text>

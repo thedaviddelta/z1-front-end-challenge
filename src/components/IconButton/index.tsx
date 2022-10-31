@@ -10,7 +10,7 @@ export const IconButton: FC<IconButtonProps> = ({
   color,
   ...props
 }) => (
-  <Container $size={size} $color={color} {...props}>
-    <Icon aria-label={label} />
+  <Container aria-label={label} $size={size} $color={color} {...props}>
+    <Icon />
   </Container>
 );

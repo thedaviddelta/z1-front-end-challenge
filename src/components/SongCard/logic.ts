@@ -17,10 +17,8 @@ export const useLogic = ({ song, songNames }: LogicProps) => {
 
   const isPlaying = currentSong === song.name;
 
-  const handlePlayClick = () => {
-    const currentIndex = songNames.findIndex((name) => name === song.name);
-    setQueue(songNames, currentIndex);
-  };
+  const currentIndex = songNames.findIndex((name) => name === song.name);
+  const handlePlayClick = () => setQueue(songNames, currentIndex);
 
   return {
     songDuration,

@@ -6,7 +6,7 @@ import { HorizontalStackProps } from './types';
 
 export const Container = styled.div`
   display: grid;
-  grid: auto-flow / 1fr auto 1fr;
+  grid: auto-flow / 1fr auto 1fr; /* controls always centered */
   background-color: ${({ theme }) => theme.color.grayscale900};
   padding: 1rem 1.5rem;
   border-radius: 1rem 1rem 0 0;
@@ -83,6 +83,7 @@ export const TrackProgressInput = styled.input`
   }
   &::-webkit-slider-runnable-track {
     ${TrackProgressTrack}
+    /* webkit and blink specific hack as they don't support progress styling */
     background: linear-gradient(
       to right,
       ${({ theme, max = 0, value = 0 }) => {

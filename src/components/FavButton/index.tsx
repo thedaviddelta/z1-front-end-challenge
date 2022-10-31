@@ -14,6 +14,7 @@ export const FavButton: FC<FavButtonProps> = ({ className, songId }) => {
       icon={isFaved ? HeartFillIcon : HeartLineIcon}
       label={isFaved ? 'Unfav' : 'Fav'}
       size={24}
+      color={isFaved ? 'heartFaved' : 'heartEmpty'}
       className={className}
       onClick={toggleFav}
       disabled={!songId}

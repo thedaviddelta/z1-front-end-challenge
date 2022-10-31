@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { StyledMenuItemLinkProps, StyledMenuItemProps } from './types';
 
-export const Container = styled.aside`
+export const Container = styled.div`
   position: relative;
 
   width: 15rem;

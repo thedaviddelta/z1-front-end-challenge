@@ -13,21 +13,25 @@ export const SongList: FC<SongListProps> = (props) => {
 
   if (error)
     return (
-      <ErrorText tag="p" variant="bodyBold" color="white">
+      <ErrorText>
         <ErrorFillIcon /> {error.name}: {error.message}
       </ErrorText>
     );
 
-  if (songs) {
-    const songNames = songs.map(({ name }) => name);
+  if (!songs || songs.length <= 0)
     return (
-      <Container>
-        {songs.map((song) => (
-          <SongCard key={song.id} song={song} songNames={songNames} />
-        ))}
-      </Container>
+      <ErrorText>
+        <ErrorFillIcon /> No songs were found
+      </ErrorText>
     );
-  }
 
-  return null;
+  const songNames = songs.map(({ name }) => name);
+
+  return (
+    <Container>
+      {songs.map((song) => (
+        <SongCard key={song.id} song={song} songNames={songNames} />
+      ))}
+    </Container>
+  );
 };

@@ -1,4 +1,4 @@
-// import { prettyScrollbar } from '$/styles/utils/mixins';
+import { prettyScrollbar } from '$/styles/utils/mixins';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
@@ -8,9 +8,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   html, body, #__next {
+    /* allow percentage heights */
     height: 100%;
   }
   #__next {
+    /* stacking context isolation */
     isolation: isolate;
   }
   body {
@@ -20,10 +22,11 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    ${prettyScrollbar};
   }
   #__next {
     display: flex;
-    
+
     > * {
       flex: 1;
     }

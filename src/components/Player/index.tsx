@@ -105,6 +105,7 @@ export const Player: FC<PlayerProps> = ({ className }) => {
           </Text>
           <TrackProgressInput
             type="range"
+            aria-label="Track progress"
             min={0}
             max={duration}
             value={currentTime}

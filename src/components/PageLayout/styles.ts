@@ -1,12 +1,7 @@
+import { Player as DefaultPlayer } from '$/components/Player';
 import { SideMenu as DefaultSideMenu } from '$/components/SideMenu';
 import { from } from '$/styles/utils/responsive';
-import dynamic from 'next/dynamic';
 import styled from 'styled-components';
-
-const DefaultPlayer = dynamic(
-  () => import('$/components/Player').then((mod) => mod.Player),
-  { ssr: false },
-);
 
 export const Container = styled.div`
   height: 100%;
@@ -20,7 +15,7 @@ export const Container = styled.div`
 export const SideMenuWrapper = styled.aside`
   grid-area: aside;
   background-color: ${({ theme }) => theme.color.grayscale50};
-  margin-block-end: -2rem;
+  margin-block-end: -2rem; /* overflow over the player */
 `;
 
 export const SideMenu = styled(DefaultSideMenu)`

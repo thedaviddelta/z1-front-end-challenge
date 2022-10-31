@@ -69,6 +69,7 @@ export const ImageAnimationItem = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   animation: ${randomSpring} 1s infinite backwards;
 
+  /* aparently random flow */
   &:nth-of-type(1) {
     animation-delay: 0.5s;
   }

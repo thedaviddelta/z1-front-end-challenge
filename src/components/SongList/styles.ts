@@ -7,7 +7,11 @@ export const Container = styled.section`
   gap: 2rem;
 `;
 
-export const ErrorText = styled(Text)`
+export const ErrorText = styled(Text).attrs({
+  tag: 'p',
+  variant: 'bodyBold',
+  color: 'white',
+})`
   background-color: ${({ theme }) => theme.color.kaihong700};
   width: fit-content;
   margin: 0 auto;

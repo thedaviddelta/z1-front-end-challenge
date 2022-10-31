@@ -33,6 +33,9 @@ const theme = {
     kaihong200: '#ec9a9c',
     kaihong100: '#fdcdd3',
     kaihong50: '#feebee',
+    // heart colors
+    heartEmpty: '#B2B6CA',
+    heartFaved: '#BF508B',
   },
   weight: {
     bold: 700,
