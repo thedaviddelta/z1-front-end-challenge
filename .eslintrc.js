@@ -9,7 +9,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2021,
   },
-  ignorePatterns: ['!.*.js', '!.storybook', 'src/graphql/types.ts'],
+  ignorePatterns: [
+    '!.*.js',
+    '!.storybook',
+    'src/graphql/types.ts',
+    'cypress/e2e/*.ts',
+  ],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -36,6 +41,8 @@ module.exports = {
       rules: {
         // Disabled because Typescript takes care of that already.
         '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
         // This rule is enabled by eslint-config-airbnb and disabled by
         // eslint-plugin-prettier:
         // https://github.com/prettier/eslint-plugin-prettier/issues/65

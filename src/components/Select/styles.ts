@@ -21,6 +21,11 @@ export const SelectElement = styled.select`
   border: none;
   outline: none;
   cursor: pointer;
+
+  & > option {
+    /* forbidding inheritance of transparent color */
+    color: initial;
+  }
 `;
 
 export const FakeWrapper = styled.div`

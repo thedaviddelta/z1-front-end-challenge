@@ -34,6 +34,10 @@ export const useLogic = () => {
   const setup = (duration: number) => {
     dispatch({ type: ActionType.SETUP, payload: { duration } });
     void audioRef.current?.play();
+    navigator.mediaSession?.setPositionState({
+      duration,
+      position: 0,
+    });
   };
 
   const play = useCallback(() => {
@@ -101,6 +105,8 @@ export const useLogic = () => {
     goNextSong();
     timeSeek(0);
   }, [goNextSong, timeSeek]);
+
+  useEffect(() => (currentSong ? pause() : stop()), [currentSong, pause, stop]);
 
   useEffect(() => {
     if (!navigator.mediaSession) return;

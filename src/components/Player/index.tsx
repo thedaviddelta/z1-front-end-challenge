@@ -105,10 +105,13 @@ export const Player: FC<PlayerProps> = ({ className }) => {
           </Text>
           <TrackProgressInput
             type="range"
-            aria-label="Track progress"
             min={0}
             max={duration}
             value={currentTime}
+            aria-label="Track progress"
+            aria-valuemin={0}
+            aria-valuemax={duration}
+            aria-valuenow={currentTime}
             onChange={(e) => timeSeek(Number(e.target.value))}
           />
           <Text tag="p" variant="caption" color="white">
@@ -116,7 +119,12 @@ export const Player: FC<PlayerProps> = ({ className }) => {
           </Text>
         </HorizontalStack>
 
-        <PlayrateButton onClick={nextRate}>{playrate}x</PlayrateButton>
+        <PlayrateButton
+          aria-label={`Playrate: ${playrate}x`}
+          onClick={nextRate}
+        >
+          {playrate}x
+        </PlayrateButton>
         <IconButton
           icon={isMuted ? VolumeMuteFillIcon : VolumeUpFillIcon}
           label={isMuted ? 'Unmute' : 'Mute'}
