@@ -2,6 +2,7 @@ import badge from '$/assets/z1-badge.png';
 import { Separator } from '$/components/Separator';
 import { Text } from '$/components/Text';
 import { MAIN_MENU_LINKS } from '$/globals/constants/mainMenu';
+import { useMediaFrom } from '$/styles/utils/responsive';
 import Link from 'next/link';
 import React from 'react';
 
@@ -20,6 +21,7 @@ import { MenuLinksProps, SideMenuProps } from './types';
 
 export const SideMenu = ({ className }: SideMenuProps) => {
   const { isMenuItemActive } = useLogic();
+  const isTabletLandscape = useMediaFrom('tabletLandscape');
 
   return (
     <Container className={className}>
@@ -34,7 +36,11 @@ export const SideMenu = ({ className }: SideMenuProps) => {
           </Text>
         </UserInfo>
       </UserInfoContainer>
-      <Separator spaceBlockStart="0" spaceBlockEnd="1rem" />
+      <Separator
+        isVertical={!isTabletLandscape}
+        spaceBlockStart="0"
+        spaceBlockEnd="1rem"
+      />
       <MenuNav>
         <MenuList>
           {Object.values(MAIN_MENU_LINKS).map(

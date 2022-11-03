@@ -1,28 +1,43 @@
+import { from } from '$/styles/utils/responsive';
 import styled from 'styled-components';
 
 import { StyledMenuItemLinkProps, StyledMenuItemProps } from './types';
 
 export const Container = styled.div`
   position: relative;
-
-  width: 15rem;
 `;
 
 export const UserInfoContainer = styled.div`
   display: flex;
-  width: 100%;
-  padding: 1.5rem 0.75rem 1rem 1rem;
+  padding: 0 1.5rem;
+
+  ${from.tabletLandscape} {
+    width: 100%;
+    padding: 1.5rem 0.75rem 1rem 1rem;
+  }
 `;
 
 export const UserInfo = styled.div``;
 
 export const MenuNav = styled.nav`
-  padding: 0 0.75rem;
+  padding: 0 1.5rem;
+  margin-inline-start: auto;
+
+  ${from.tabletLandscape} {
+    padding: 0 0.75rem;
+    margin-inline-start: revert;
+  }
 `;
 
 export const MenuList = styled.ul`
   list-style-type: none;
   padding-inline-start: 0;
+  margin: 0;
+  display: flex;
+
+  ${from.tabletLandscape} {
+    flex-direction: column;
+  }
 `;
 
 export const MenuItemLink = styled.a<StyledMenuItemLinkProps>`

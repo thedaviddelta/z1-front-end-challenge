@@ -1,5 +1,6 @@
 import { IconButton } from '$/components/IconButton';
 import { typography } from '$/styles/themes/typography';
+import { from } from '$/styles/utils/responsive';
 import styled, { css } from 'styled-components';
 
 import { HorizontalStackProps } from './types';
@@ -7,6 +8,7 @@ import { HorizontalStackProps } from './types';
 export const Container = styled.div`
   display: grid;
   grid: auto-flow / 1fr auto 1fr; /* controls always centered */
+  gap: 2rem;
   background-color: ${({ theme }) => theme.color.grayscale900};
   padding: 1rem 1.5rem;
   border-radius: 1rem 1rem 0 0;
@@ -16,10 +18,20 @@ export const HorizontalStack = styled.div<HorizontalStackProps>`
   display: flex;
   align-items: center;
   gap: ${({ $gap }) => $gap / 16}rem;
+`;
 
-  &:last-of-type {
-    justify-self: end;
+export const InfoWrapper = styled.div`
+  white-space: nowrap;
+  display: none;
+
+  ${from.tabletPortrait} {
+    display: revert;
   }
+`;
+
+export const ProgressWrapper = styled(HorizontalStack)`
+  flex-grow: 1;
+  justify-content: end;
 `;
 
 export const Image = styled.img`
@@ -63,7 +75,8 @@ const TrackProgressTrack = css`
 export const TrackProgressInput = styled.input`
   appearance: none;
   background: transparent;
-  width: 16.75rem;
+  max-width: 16.75rem;
+  flex: 1 0 8rem;
 
   /* have to be separated for all selectors to be valid */
   &::-moz-range-thumb {

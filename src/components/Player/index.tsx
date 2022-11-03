@@ -15,8 +15,10 @@ import {
   Container,
   HorizontalStack,
   Image,
+  InfoWrapper,
   PlaybackButton,
   PlayrateButton,
+  ProgressWrapper,
   TrackProgressInput,
 } from './styles';
 import { AudioEvent, PlayerProps } from './types';
@@ -61,14 +63,14 @@ export const Player: FC<PlayerProps> = ({ className }) => {
           src={song?.image ?? '/song-fallback.svg'}
           alt={song?.name ? `${song.name}'s art` : 'No track'}
         />
-        <div>
+        <InfoWrapper>
           <Text tag="p" variant="body2" color="white">
             {song?.name ?? 'No track'}
           </Text>
           <Text tag="p" variant="caption" color="grayscale200">
             {song?.author?.name ?? 'Unknown'}
           </Text>
-        </div>
+        </InfoWrapper>
       </HorizontalStack>
 
       <HorizontalStack $gap={16}>
@@ -99,7 +101,7 @@ export const Player: FC<PlayerProps> = ({ className }) => {
       </HorizontalStack>
 
       <HorizontalStack $gap={24}>
-        <HorizontalStack $gap={12}>
+        <ProgressWrapper $gap={12}>
           <Text tag="p" variant="caption" color="white">
             {formatSeconds(currentTime).toFull()}
           </Text>
@@ -117,7 +119,7 @@ export const Player: FC<PlayerProps> = ({ className }) => {
           <Text tag="p" variant="caption" color="white">
             {formatSeconds(duration).toFull()}
           </Text>
-        </HorizontalStack>
+        </ProgressWrapper>
 
         <PlayrateButton
           aria-label={`Playrate: ${playrate}x`}

@@ -7,20 +7,41 @@ export const Container = styled.div`
   height: 100%;
   display: grid;
   grid:
-    'aside main' 1fr
-    'player player' auto
-    / auto 1fr;
+    'aside' auto
+    'main' 1fr
+    'player' auto
+    / auto;
+
+  ${from.tabletLandscape} {
+    grid:
+      'aside main' 1fr
+      'player player' auto
+      / auto 1fr;
+  }
 `;
 
 export const SideMenuWrapper = styled.aside`
   grid-area: aside;
   background-color: ${({ theme }) => theme.color.grayscale50};
-  margin-block-end: -2rem; /* overflow over the player */
+
+  ${from.tabletLandscape} {
+    margin-block-end: -2rem; /* overflow over the player */
+  }
 `;
 
 export const SideMenu = styled(DefaultSideMenu)`
-  position: sticky;
-  top: 0;
+  display: flex;
+  align-items: center;
+  height: 4.5rem;
+
+  ${from.tabletLandscape} {
+    position: sticky;
+    top: 0;
+    flex-direction: column;
+    align-items: revert;
+    width: 15rem;
+    height: revert;
+  }
 `;
 
 export const Main = styled.main`
@@ -30,7 +51,7 @@ export const Main = styled.main`
   width: 100%;
   padding-inline: 2.5rem;
 
-  ${from['tabletLandscape']} {
+  ${from.tabletLandscape} {
     padding-inline: 6rem;
   }
 `;

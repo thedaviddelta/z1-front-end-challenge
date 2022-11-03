@@ -1,11 +1,16 @@
 import { SearchInput as DefaultSearchInput } from '$/components/SearchInput';
+import { from } from '$/styles/utils/responsive';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-block: 2.5rem 6.3rem;
+  padding-block: 1.5rem 4.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  ${from.tabletLandscape} {
+    padding-block: 2.5rem 6.3rem;
+  }
 `;
 
 export const SearchInput = styled(DefaultSearchInput)``;

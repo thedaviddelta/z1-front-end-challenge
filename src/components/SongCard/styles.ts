@@ -1,5 +1,6 @@
 import { IconButton } from '$/components/IconButton';
 import { Text } from '$/components/Text';
+import { from } from '$/styles/utils/responsive';
 import dynamic from 'next/dynamic';
 import styled, { keyframes } from 'styled-components';
 
@@ -10,11 +11,11 @@ const DefaultFavButton = dynamic(
 
 export const Container = styled.article`
   display: grid;
-  grid: auto-flow / 8.75rem 37.5rem auto;
+  grid: auto-flow / 8.75rem 1fr auto;
   gap: 1.25rem;
   align-items: center;
   padding: 0;
-  inline-size: 64rem;
+  inline-size: 100%;
   min-block-size: 8.75rem;
 `;
 
@@ -94,6 +95,10 @@ export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+
+  ${from.laptop} {
+    max-width: 37.5rem;
+  }
 `;
 
 export const ExtraWrapper = styled.div`
